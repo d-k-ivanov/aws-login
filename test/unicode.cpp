@@ -1,9 +1,10 @@
 /*
 * ---------------------------------------------------------------------------
 *       Project :  aws-login
-*       File    :  aws-login.cpp
-*       Created :  4/4/2019 2:00:00 AM +0300
+*       File    :  unicode.cpp
+*       Created :  04.05.2019 2:26:28 +0300
 *       Author  :  Dmitriy Ivanov
+*       Company :  Ormco
 * ---------------------------------------------------------------------------
 *  Copyright (c) 2019 Dmitriy Ivanov
 *
@@ -26,7 +27,6 @@
 *  SOFTWARE.
 * ===========================================================================
 */
-
 
 #include <iostream>
 #include <string>
