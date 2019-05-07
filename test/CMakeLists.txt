@@ -18,36 +18,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-cmake_minimum_required(VERSION 3.7)
-project(aws-login)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/tests)
 
-set_property(GLOBAL PROPERTY USE_FOLDERS ON)
-
-add_subdirectory(${CMAKE_SOURCE_DIR}/thirdparty)
-
-if(${ARCHITECTURE} MATCHES "x86_64")
-    set(TARGET_BITS 64)
-else()
-    set(TARGET_BITS 32)
+if(AWS_LOGIN_BUILD_TESTS)
+    add_executable(unicode_test "unicode.cpp")
 endif()
 
-if(NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE Release)
-endif()
-
-set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR})
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/${CMAKE_BUILD_TYPE})
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/${CMAKE_BUILD_TYPE})
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/${CMAKE_BUILD_TYPE})
-
-if (CMAKE_VERSION VERSION_LESS "3.1")
-    if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-        set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
-    endif ()
-else ()
-    set (CMAKE_CXX_STANDARD 17)
-endif ()
-
-add_subdirectory(${CMAKE_SOURCE_DIR}/src)
-option(AWS_LOGIN_BUILD_TESTS "Set to ON to build tests" ON)
-add_subdirectory(${CMAKE_SOURCE_DIR}/test)
