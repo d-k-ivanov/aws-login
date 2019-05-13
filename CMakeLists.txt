@@ -49,5 +49,6 @@ else ()
 endif ()
 
 add_subdirectory(${CMAKE_SOURCE_DIR}/src)
+
 option(AWS_LOGIN_BUILD_TESTS "Set to ON to build tests" ON)
 add_subdirectory(${CMAKE_SOURCE_DIR}/test)

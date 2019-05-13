@@ -4,7 +4,6 @@
 *       File    :  unicode.cpp
 *       Created :  04.05.2019 2:26:28 +0300
 *       Author  :  Dmitriy Ivanov
-*       Company :  Ormco
 * ---------------------------------------------------------------------------
 *  Copyright (c) 2019 Dmitriy Ivanov
 *
