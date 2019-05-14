@@ -27,21 +27,38 @@
 * ===========================================================================
 */
 
+#include <cxxopts.hpp>
 
+// STL
 #include <iostream>
+#include <filesystem>
 #include <string>
 
 #ifdef _WIN32
 #include <windows.h>
 #endif
 
-int main()
+namespace fs = std::filesystem;
+
+int main(int argc, char* argv[])
 {
     #ifdef _WIN32
     SetConsoleOutputCP(CP_UTF8);
     #endif
-    std::string str = "Pa’s väi wöl Θέλει נחמדה いろはにほ 다람쥐 ā łódź Съешь Češće žušč เป็นมนุ بىشەم  中国智造 視野無限廣";
-    std::cout << str << '\n';
+    cxxopts::Options options(fs::path(argv[0]).filename().string(), "Description");
+    options
+        .positional_help("[optional args]")
+        .show_positional_help();
+
+    options.add_options()
+        ("h,help", "Show help")
+        ("l,list", "List of known AWS credentials");
+
+    options.custom_help("[-h] [-l]");
+    auto result = options.parse(argc, argv);
+
+    if (result.count("help")) std::cout << options.help() << std::endl;
+
     std::system("pause");
     return 0;
 }

@@ -19,11 +19,9 @@
 # SOFTWARE.
 
 cmake_minimum_required(VERSION 3.7)
-project(aws-login)
+project(aws-login LANGUAGES CXX VERSION 0.0.1)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
-
-add_subdirectory(${CMAKE_SOURCE_DIR}/thirdparty)
 
 if(${ARCHITECTURE} MATCHES "x86_64")
     set(TARGET_BITS 64)
@@ -48,7 +46,11 @@ else ()
     set (CMAKE_CXX_STANDARD 17)
 endif ()
 
+
+set(CXXOPTS_HEADER ${CMAKE_CURRENT_LIST_DIR}/thirdparty/cxxopts/include/cxxopts.hpp)
+add_subdirectory(${CMAKE_SOURCE_DIR}/thirdparty)
+
 add_subdirectory(${CMAKE_SOURCE_DIR}/src)
 
-option(AWS_LOGIN_BUILD_TESTS "Set to ON to build tests" ON)
+option(AWS_LOGIN_BUILD_TESTS "Set to ON to build tests" OFF)
 add_subdirectory(${CMAKE_SOURCE_DIR}/test)

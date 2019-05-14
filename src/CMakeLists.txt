@@ -18,4 +18,5 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-add_executable(main "main.cpp")
+add_executable(aws-login main.cpp)
+target_link_libraries(aws-login cxxopts)
