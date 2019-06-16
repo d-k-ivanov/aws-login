@@ -45,20 +45,50 @@ int main(int argc, char* argv[])
     #ifdef _WIN32
     SetConsoleOutputCP(CP_UTF8);
     #endif
+
+    int exitCode = 0;
+
     cxxopts::Options options(fs::path(argv[0]).filename().string(), "Description");
     options
         .positional_help("[optional args]")
         .show_positional_help();
 
     options.add_options()
-        ("h,help", "Show help")
-        ("l,list", "List of known AWS credentials");
+        ("h,help",   "Show help")
+        ("l,list",   "List known AWS credentials")
+        ("u,use",    "Use AWS credentials")
+        ("a,add",    "Add AWS credentials")
+        ("d,delete", "Delete AWS credentials");
 
-    options.custom_help("[-h] [-l]");
-    auto result = options.parse(argc, argv);
+    options.custom_help("[-h] [-l] [-u] [-a] [-d]");
 
-    if (result.count("help")) std::cout << options.help() << std::endl;
+    try {
+        auto result = options.parse(argc, argv);
+
+        if (result.count("help") || argc == 1 ) {
+            std::cout << options.help() << '\n';
+            std::system("pause");
+            exit(0);
+        }
+        else if (result.count("list")) {
+            std::cout << "List known AWS credentials\n";
+        }
+        else if (result.count("use")) {
+            std::cout << "Use AWS credentials\n";
+        }
+        else if (result.count("add")) {
+            std::cout << "Add AWS credentials\n";
+        }
+        else if (result.count("delete")) {
+            std::cout << "Delete AWS credentials\n";
+        }
+    }
+    catch(const cxxopts::OptionException & e) {
+        std::cout << "Error: " << e.what() << " Showing help message...\n";
+        std::cout << options.help() << '\n';
+        exitCode = 1;
+    }
 
     std::system("pause");
-    return 0;
+    return exitCode;
 }
