@@ -3,9 +3,9 @@
 *       Project :  aws-login
 *       File    :  unicode.cpp
 *       Created :  04.05.2019 2:26:28 +0300
-*       Author  :  Dmitriy Ivanov
+*       Author  :  Dmitry Ivanov
 * ---------------------------------------------------------------------------
-*  Copyright (c) 2019 Dmitriy Ivanov
+*  Copyright (c) 2021 Dmitry Ivanov
 *
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
 *  of this software and associated documentation files (the "Software"), to deal

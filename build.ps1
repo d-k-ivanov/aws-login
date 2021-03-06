@@ -1,4 +1,4 @@
-# Copyright (c) 2019 Dmitriy Ivanov
+# Copyright (c) 2021 Dmitry Ivanov
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -47,7 +47,7 @@ function Set-VCVars {
         None
     .NOTES
         Version:        1.0
-        Author:         Dmitriy Ivanov
+        Author:         Dmitry Ivanov
         Creation Date:  2019-01-14
     .EXAMPLE
         VC-Vars-All x86_amd64
